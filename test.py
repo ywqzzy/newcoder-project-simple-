@@ -16,7 +16,7 @@ def demo_string():
     print '...'.join(['a', 'b', 'c'])
 
 def demo_operation():
-    pass
+    print'hahah'
 
 def demo_buildinfunction():
     print max(1001, 1), min(1001, 1)
