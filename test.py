@@ -1,5 +1,8 @@
 #-*- coding: UTF-8 -*-
 
+import random
+import re
+
 def demo_string():
     stra = "hello world"
     print stra.capitalize()
@@ -98,11 +101,69 @@ def demo_set():
     print seta - setb
     print len(seta)
 
-if __name__ == '__main__':
+class User:
+    type = 'USER'
 
+    def __init__(self, name, uid):
+        self.name = name
+        self.uid = uid
+
+    def __repr__(self):
+        return 'im ' + self.name + ' ' + str(self.uid)
+
+
+class Guest(User):
+    def __repr__(self):
+        return 'im guest:' + self.name + ' ' + str(self.uid)
+
+
+class Admin(User):
+    type = 'ADMIN'
+
+    def __init__(self, name, uid, group):
+        User.__init__(self, name, uid)
+        self.group = group
+
+    def __repr__(self):
+        return 'im ' + self.name + ' ' + str(self.uid) + ' ' + self.group
+
+def create_user(type):
+    if type == 'USER':
+        return User('ywq',1)
+    elif type == 'ADMIN':
+        return Admin('ZZY',11,'G1')
+    else:
+        return Guest('hha',22)
+
+
+def demo_random():
+    # random.seed(1)
+    print random.random()
+    print random.randint(0, 200)
+    print random.choice(range(0, 100,10))
+    print random.sample(range(0,100),4)
+    a = [1,2,3,4,5]
+    random.shuffle(a)
+    print a
+
+def demo_re():
+    str = 'abc123def12gh15'
+    p1 = re.compile('[\d]+')
+    print p1.findall(str)
+
+
+if __name__ == '__main__':
+    demo_re()
+    #demo_random(
+'''
     # print 'hello newcoder '
     # demo_string()
     # demo_controlflow()
     # demo_list()
     # demo_dictionary()
-    demo_set()
+    # demo_set()
+    user1 = User('ywq', 1)
+    print user1
+    #print create_user('USER')
+    print create_user('GUEST')
+'''
