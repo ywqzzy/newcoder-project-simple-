@@ -1,6 +1,6 @@
 #-*- encoding=UTF-8 -*-
 from flask_script import Manager
-from flaskTest import app
+from basicKnowledge.flaskTest import app
 
 manager = Manager(app)
 
