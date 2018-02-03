@@ -21,11 +21,13 @@ def init_database():
             db.session.add(Image(get_image_url(), i+1))
             for k in range(0, 3):
                 db.session.add(Comment('This is a comment' + str(k), 1+3*i+j, i+1))
+    for j in range(0, 7):
+        db.session.add(Image(get_image_url(), 100))
     db.session.commit()
     for i in range(50, 100, 2):
         user = User.query.get(i)
         user.username = '[New1]' + user.username
-
+    db.session.add(Image(get_image_url(), i + 1))
     for i in range(50, 100, 2):
         comment = Comment.query.get(i+1)
         db.session.delete(comment)
